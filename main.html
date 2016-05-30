@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Tab List</title>
+    <style>
+      body {
+        min-width:357px;
+        overflow-x:hidden;
+        margin: 2px;
+      }
+      
+      .tabrow {
+        margin: 0px;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+            
+      .tabrow:hover {
+        background-color: rgba(155, 180, 252, 0.1);
+      }
+      
+      .tabrow.current {
+        font-weight: bold;
+      }
+            
+      .selected {
+        background-color: rgba(155, 180, 252, 0.5);
+      }
+      .tabrow a {
+        text-decoration:none;
+        color: black;
+      }
+      .tabrow img {
+        height: 16px; 
+        width: 16px;
+        vertical-align:middle;
+        margin-right: 5px;
+      }
+      
+      .close {
+        padding-left: 10px;
+        margin-right: 10px;
+      }
+      
+      #search {
+        width: 98%;
+        margin: 0 auto;
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      
+    </style>
+
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <input type="search" id="search" incremental=true placeholder="Search tabs">
+    <div id='res'></div>
+  </body>
+</html>

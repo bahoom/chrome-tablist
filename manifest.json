@@ -1,0 +1,30 @@
+{
+  "name": "Tab List",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "A simple list of all your tabs.",
+  "browser_action": {
+    "default_icon": "icon-19.png"
+  },
+  "icons": { "16": "icon-16.png",
+            "128": "icon-128.png"
+  },
+  "permissions": [
+  	"contextMenus",
+    "tabs",
+    "windows",
+    "commands"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "commands": {
+    "open": {
+      "suggested_key": {
+        "default": "Alt+T",
+        "mac": "Alt+T"
+      },
+      "description": "open tab overview"
+    }
+  }
+}
