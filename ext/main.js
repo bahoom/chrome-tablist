@@ -1,5 +1,5 @@
 
-function activateTab(tabId, focusWindow=true, callback) {
+function activateTab(tabId, focusWindow=true, finished_callback) {
   chrome.tabs.update(tabId, {active: true}, function() {});
   
   if(focusWindow) {
@@ -8,14 +8,13 @@ function activateTab(tabId, focusWindow=true, callback) {
     
       chrome.windows.get(windowId, function(win) {
         chrome.windows.update(windowId, {focused: true}, function() {
-          callback();
+          finished_callback();
         });
       });
     });
   }
-
   else {
-    callback();
+    finished_callback();
   }
 }
 
@@ -121,9 +120,8 @@ chrome.tabs.onCreated.addListener(reload);
 // chrome.tabs.onRemoved.addListener(reload);
 
 document.addEventListener("keydown", function (evt) {
-  
-  // down
-  if(evt.keyCode == 40) {
+
+  if(evt.keyCode == 40) { // down
     var rows = document.getElementsByClassName("tabrow");
     rows = Array.prototype.slice.call(rows);
     rows = rows.filter(e => {
@@ -145,8 +143,7 @@ document.addEventListener("keydown", function (evt) {
     
     evt.preventDefault();
   }
-  // up
-  else if(evt.keyCode == 38) {
+  else if(evt.keyCode == 38) { // up
     var rows = document.getElementsByClassName("tabrow");
     rows = Array.prototype.slice.call(rows);
     rows = rows.filter(e => {
@@ -172,8 +169,7 @@ document.addEventListener("keydown", function (evt) {
     
     evt.preventDefault();
   }
-  // enter
-  else if(evt.keyCode == 13) {
+  else if(evt.keyCode == 13) { // enter
     var selected = document.getElementsByClassName("selected")[0];
     if(selected) {
       var tabId = parseInt(selected.dataset.id);
@@ -183,7 +179,7 @@ document.addEventListener("keydown", function (evt) {
     }
     evt.preventDefault();
   }
-  else if(evt.keyCode == 70 && evt.ctrlKey) { // f
+  else if(evt.keyCode == 70 && evt.ctrlKey) { // ctrl+f
     window.scrollTo(0, 0);
     document.getElementById("search").focus();
   }
